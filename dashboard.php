@@ -1,5 +1,5 @@
 <?php
-session_start(); // Toujours mettre ça au débuth
+session_start(); // Toujours mettre ça au début
 
 // Si l'utilisateur n'est pas connecté, on le vire !
 if (!isset($_SESSION['user_id'])) {

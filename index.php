@@ -393,5 +393,4 @@ function is_logged_in() {
     <script src="script.js"></script>
 
 </body>
-
 </html>
