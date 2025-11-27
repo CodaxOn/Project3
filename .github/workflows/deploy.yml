@@ -17,18 +17,11 @@ jobs:
       - name: Vérification syntaxe PHP
         run: |
           find . -name "*.php" -print0 | xargs -0 -n1 php -l
-jobs:
-  build-and-test:
-    runs-on: ubuntu-latest
-    steps:
-      # checkout + vérifs (comme ci-dessus)
+deploy:
+  needs: build-and-test
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-  deploy:
-    needs: build-and-test
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      # Étape de déploiement adaptée à ton hébergeur (SSH, FTP, etc.)
-
+    # Ici on mettra ensuite les étapes pour envoyer tes fichiers sur ton serveur
