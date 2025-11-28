@@ -18,8 +18,8 @@ jobs:
       - name: Vérification syntaxe PHP
         run: |
           find . -name "*.php" -print0 | xargs -0 -n1 php -l
-
-  sonar:
+          
+   sonar:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -31,13 +31,12 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v6
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}  # ← URL de TON serveur SonarQube
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
         with:
           args: >
             -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
-            -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
             -Dsonar.sources=.
-            -Dsonar.php.file.suffixes=php
+
 
   deploy:
     needs: [build-and-test, sonar]
