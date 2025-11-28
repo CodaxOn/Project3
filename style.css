@@ -4,6 +4,7 @@ body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; color: #3
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
+
 /* --- NAVIGATION --- */
 .navbar {
     display: flex; justify-content: space-between; align-items: center;
@@ -16,6 +17,7 @@ ul { list-style: none; }
 .nav-links a { font-weight: 500; transition: color 0.3s; }
 .nav-links a:hover, .nav-links a.active { color: #f1c40f; }
 .btn-login { background: #f1c40f; color: #2c3e50 !important; padding: 8px 15px; border-radius: 5px; }
+.nav-links.nav-active { display: flex; } /* Classe active pour le burger */
 
 /* NOUVEAU : Style de l'icône burger */
 .burger {
@@ -23,7 +25,6 @@ ul { list-style: none; }
     cursor: pointer;
     font-size: 1.5rem;
 }
-
 
 /* --- SECTIONS (Gestion de l'affichage) --- */
 .section { 
@@ -40,145 +41,85 @@ h2 { color: #2c3e50; margin-bottom: 30px; border-bottom: 2px solid #f1c40f; disp
 /* --- ACCUEIL --- */
 .hero { text-align: center; padding: 80px 20px; background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 30px; }
 .hero h1 { font-size: 2.5rem; margin-bottom: 15px; color: #2c3e50; }
-.cta-btn { background: #e74c3c; color: white; border: none; padding: 12px 30px; font-size: 1.1rem; border-radius: 5px; cursor: pointer; transition: 0.3s; }
-.cta-btn:hover { background: #c0392b; }
+.cta-btn { background: #2557a7; color: white; border: none; padding: 12px 30px; font-size: 1.1rem; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+.cta-btn:hover { background: #1d438a; }
 
-/* --- OFFRES (Cartes - NOUVELLE VERSION) --- */
+
+/* --- OFFRES (Cartes - NOUVELLE VERSION STYLE INDEED) --- */
 .offers-container {
     display: flex;
     gap: 20px;
     min-height: 70vh;
+    align-items: flex-start;
 }
 .offers-list {
     flex: 1;
     min-width: 350px;
     max-width: 450px;
 }
+
+/* LE PANNEAU DE DROITE (STYLE INDEED) */
 .offer-details-panel {
-    flex: 2;
+    flex: 1.5;
     background: white;
-    padding: 20px 30px;
+    padding: 24px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid #e4e2e0;
     position: sticky;
-    top: 80px;
-    max-height: calc(100vh - 100px);
+    top: 90px; /* Juste sous la navbar */
+    max-height: calc(100vh - 110px);
     overflow-y: auto;
 }
+
 .offer-card {
     background: white;
-    padding: 15px;
-    margin-bottom: 15px;
+    padding: 16px;
+    margin-bottom: 16px;
     border-radius: 8px;
-    border: 1px solid #ddd;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e4e2e0;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: box-shadow 0.2s, border-color 0.2s;
 }
 .offer-card:hover { 
-    border-color: #f1c40f;
+    border-color: #2557a7; /* Bleu Indeed au survol */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 .offer-card.active {
-    border-left: 5px solid #f1c40f;
-    background-color: #f7f9fb;
+    border-left: 5px solid #2557a7;
+    background-color: #f3f2f1; /* Gris très clair */
 }
 .header-job h3 { 
-    color: #2c3e50; 
-    margin-bottom: 3px; 
-    font-size: 1.2rem;
+    color: #2d2d2d; 
+    margin-bottom: 4px; 
+    font-size: 1.1rem;
+    font-weight: 700;
 }
 .offer-card .company { 
-    font-weight: 500; 
-    color: #7f8c8d; 
-    margin-bottom: 10px; 
-    font-size: 0.9rem;
+    font-weight: 400; 
+    color: #2d2d2d; 
+    margin-bottom: 8px; 
+    font-size: 0.95rem;
 }
 .job-info {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     margin-bottom: 10px;
     font-size: 0.85rem;
-    color: #555;
-}
-.job-info span {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-.job-info i {
-    color: #f1c40f;
+    color: #595959;
 }
 .response-status {
-    font-size: 0.8rem;
-    color: #27ae60;
+    font-size: 0.75rem;
+    color: #055c29;
     display: flex;
     align-items: center;
+    margin-top: 8px;
 }
 .response-status .flash {
     color: #f1c40f;
     margin-right: 5px;
 }
-.more-offers-link {
-    display: block;
-    text-align: center;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #ecf0f1;
-    color: #34495e;
-    font-weight: bold;
-    margin-top: 10px;
-}
-.detail-section {
-    margin-bottom: 25px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #eee;
-}
-.detail-section h3 {
-    color: #2c3e50;
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-    border-bottom: none;
-    padding-bottom: 0;
-}
-.detail-section h4 {
-    color: #f1c40f;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    font-size: 1.1rem;
-}
-.detail-section ul {
-    list-style: disc;
-    margin-left: 20px;
-    padding-left: 0;
-}
-.detail-section p, .detail-section li {
-    font-size: 0.95rem;
-    margin-bottom: 8px;
-}
-.empty-state {
-    text-align: center;
-    padding: 100px 20px;
-    color: #7f8c8d;
-}
-.empty-state i {
-    font-size: 3rem;
-    margin-bottom: 15px;
-}
-.btn-detail-postuler {
-    background: #e74c3c;
-    color: white;
-    border: none;
-    padding: 12px 30px;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    margin: 20px 0;
-}
-.btn-detail-postuler:hover { background: #c0392b; }
 
 /* --- BARRE DE RECHERCHE DES OFFRES --- */
 .search-bar-container {
@@ -208,7 +149,7 @@ h2 { color: #2c3e50; margin-bottom: 30px; border-bottom: 2px solid #f1c40f; disp
     cursor: pointer;
 }
 .search-btn {
-    background: #f1c40f;
+    background: #2557a7; /* Bleu Indeed */
     color: white;
     border: none;
     padding: 10px 15px;
@@ -217,7 +158,7 @@ h2 { color: #2c3e50; margin-bottom: 30px; border-bottom: 2px solid #f1c40f; disp
     transition: background 0.2s;
 }
 .search-btn:hover {
-    background: #2c3e50;
+    background: #1d438a;
 }
 
 /* --- CANDIDATURES (Tableau) --- */
@@ -230,10 +171,12 @@ th { background-color: #f8f9fa; }
 .refuse { background: #e74c3c; }
 .accepte { background: #27ae60; }
 
+
 /* --- PARTENAIRES & CONSEILS --- */
 .partners-grid, .advice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
 .partner-card, .advice-card { background: white; padding: 20px; text-align: center; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
 .partner-card i, .advice-card i { font-size: 3rem; color: #34495e; margin-bottom: 10px; }
+
 
 /* --- CONNEXION (Espaces) --- */
 .auth-container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
@@ -241,7 +184,8 @@ th { background-color: #f8f9fa; }
 .tab-btn { flex: 1; padding: 15px; border: none; background: none; font-size: 1rem; cursor: pointer; color: #7f8c8d; font-weight: 600; }
 .tab-btn.active { color: #2c3e50; border-bottom: 3px solid #3498db; }
 
-/* --- AJOUTS POUR LOGIN/REGISTER --- */
+
+/* --- LOGIN/REGISTER FORM GROUPS --- */
 .auth-group {
     display: none;
     border: 1px solid #ecf0f1;
@@ -280,7 +224,8 @@ th { background-color: #f8f9fa; }
 .btn-submit { width: 100%; padding: 12px; background: #3498db; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
 .btn-submit:hover { background: #2980b9; }
 
-/* Amélioration des formulaires (Création d'offre et Inscription) */
+
+/* Amélioration des formulaires */
 .form-grid { 
     display: grid; 
     grid-template-columns: 1fr 1fr; 
@@ -295,7 +240,7 @@ th { background-color: #f8f9fa; }
     margin-top: 5px; 
     display: block;
 }
-/* Fin AJOUTS */
+
 
 /* --- MODAL (Le formulaire Démarrons Ensemble) --- */
 .modal {
@@ -321,18 +266,19 @@ textarea { width: 100%; padding: 10px; border: 1px solid #dde2e5; border-radius:
 .btn-submit-modal { background: #607d8b; color: white; border: none; padding: 15px 30px; border-radius: 8px; width: 100%; margin-top: 20px; font-weight: bold; cursor: pointer; }
 .btn-submit-modal:hover { background: #455a64; }
 
+
 /* --- MEDIA QUERIES GÉNÉRALES (768px) --- */
 @media (max-width: 768px) {
     /* NAVIGATION & BURGER */
     .navbar {
-        flex-direction: row; /* Maintenir le logo et le burger côte à côte */
+        flex-direction: row;
         padding: 15px 20px;
     }
     .burger {
-        display: block; /* Afficher l'icône burger sur mobile */
+        display: block;
     }
     .nav-links {
-        display: none; /* Caché par défaut */
+        display: none;
         flex-direction: column;
         width: 100%;
         position: absolute;
@@ -341,8 +287,8 @@ textarea { width: 100%; padding: 10px; border: 1px solid #dde2e5; border-radius:
         background-color: #2c3e50;
         box-shadow: 0 5px 5px rgba(0,0,0,0.2);
     }
-    .nav-links.open {
-        display: flex; /* Affiché via JS */
+    .nav-links.nav-active {
+        display: flex; /* Affiche le menu quand actif */
     }
     .nav-links li {
         text-align: center;
@@ -352,37 +298,40 @@ textarea { width: 100%; padding: 10px; border: 1px solid #dde2e5; border-radius:
     
     /* SECTIONS */
     .section {
-        padding: 20px; /* Moins de padding sur mobile */
+        padding: 20px;
     }
 
     /* OFFRES */
     .offers-container {
-        flex-direction: column; /* Les offres et les détails s'empilent */
+        flex-direction: column;
     }
     .offers-list {
         min-width: 100%;
         max-width: 100%;
     }
     .offer-details-panel {
-        position: static; /* Supprime le sticky sur mobile */
+        position: static;
         max-height: none;
+        margin-top: 20px;
+        height: auto;
+        overflow-y: visible;
     }
     
-    /* BARRE DE RECHERCHE CORRIGÉE */
+    /* BARRE DE RECHERCHE */
     .search-bar-container {
-        flex-wrap: wrap; /* Permettre aux éléments de passer à la ligne */
+        flex-wrap: wrap;
     }
     .search-input {
-        width: 100%; /* Prend toute la ligne */
+        width: 100%;
         margin-right: 0;
         margin-bottom: 10px;
     }
     .filter-select {
-        flex: 1; /* Distribue l'espace entre les sélecteurs */
+        flex: 1;
         margin-right: 10px;
     }
     .search-btn {
-        width: 100%; /* Le bouton prend toute la largeur */
+        width: 100%;
         margin-top: 10px;
     }
 
@@ -391,6 +340,6 @@ textarea { width: 100%; padding: 10px; border: 1px solid #dde2e5; border-radius:
         padding: 20px;
     }
     .form-grid {
-        grid-template-columns: 1fr; /* Les formulaires passent en une colonne */
+        grid-template-columns: 1fr;
     }
 }
