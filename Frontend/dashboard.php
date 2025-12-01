@@ -216,7 +216,10 @@ if (isset($_GET['msg'])) {
                     <form action="post_job.php" method="POST">
                         <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                             <div class="form-group">
-                                <label>Titre du poste</label>
+                                < label > 
+  < input  type = "text" />
+  Nourriture préférée
+</ label >
                                 <input type="text" name="title" placeholder="Ex: Développeur Fullstack" required>
                             </div>
                             <div class="form-group">
