@@ -1,0 +1,345 @@
+/* --- RESET & GLOBAL --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', sans-serif; background-color: #f4f7f6; color: #333; line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+
+/* --- NAVIGATION --- */
+.navbar {
+    display: flex; justify-content: space-between; align-items: center;
+    background-color: #2c3e50; color: white; padding: 15px 50px;
+    position: sticky; top: 0; z-index: 1000;
+}
+.logo { font-size: 1.5rem; font-weight: bold; }
+.highlight { color: #f1c40f; }
+.nav-links { display: flex; gap: 20px; }
+.nav-links a { font-weight: 500; transition: color 0.3s; }
+.nav-links a:hover, .nav-links a.active { color: #f1c40f; }
+.btn-login { background: #f1c40f; color: #2c3e50 !important; padding: 8px 15px; border-radius: 5px; }
+.nav-links.nav-active { display: flex; } /* Classe active pour le burger */
+
+/* NOUVEAU : Style de l'icône burger */
+.burger {
+    display: none; /* Caché par défaut sur les grands écrans */
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+
+/* --- SECTIONS (Gestion de l'affichage) --- */
+.section { 
+    display: none; /* Tout caché par défaut */
+    padding: 50px; max-width: 1200px; margin: 0 auto; 
+    animation: fadeIn 0.5s;
+}
+.section.active-section { display: block; /* Affiche la section active */ }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+h2 { color: #2c3e50; margin-bottom: 30px; border-bottom: 2px solid #f1c40f; display: inline-block; padding-bottom: 5px; }
+
+/* --- ACCUEIL --- */
+.hero { text-align: center; padding: 80px 20px; background: white; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); margin-bottom: 30px; }
+.hero h1 { font-size: 2.5rem; margin-bottom: 15px; color: #2c3e50; }
+.cta-btn { background: #2557a7; color: white; border: none; padding: 12px 30px; font-size: 1.1rem; border-radius: 5px; cursor: pointer; transition: 0.3s; }
+.cta-btn:hover { background: #1d438a; }
+
+
+/* --- OFFRES (Cartes - NOUVELLE VERSION STYLE INDEED) --- */
+.offers-container {
+    display: flex;
+    gap: 20px;
+    min-height: 70vh;
+    align-items: flex-start;
+}
+.offers-list {
+    flex: 1;
+    min-width: 350px;
+    max-width: 450px;
+}
+
+/* LE PANNEAU DE DROITE (STYLE INDEED) */
+.offer-details-panel {
+    flex: 1.5;
+    background: white;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 1px solid #e4e2e0;
+    position: sticky;
+    top: 90px; /* Juste sous la navbar */
+    max-height: calc(100vh - 110px);
+    overflow-y: auto;
+}
+
+.offer-card {
+    background: white;
+    padding: 16px;
+    margin-bottom: 16px;
+    border-radius: 8px;
+    border: 1px solid #e4e2e0;
+    cursor: pointer;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+.offer-card:hover { 
+    border-color: #2557a7; /* Bleu Indeed au survol */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.offer-card.active {
+    border-left: 5px solid #2557a7;
+    background-color: #f3f2f1; /* Gris très clair */
+}
+.header-job h3 { 
+    color: #2d2d2d; 
+    margin-bottom: 4px; 
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+.offer-card .company { 
+    font-weight: 400; 
+    color: #2d2d2d; 
+    margin-bottom: 8px; 
+    font-size: 0.95rem;
+}
+.job-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    color: #595959;
+}
+.response-status {
+    font-size: 0.75rem;
+    color: #055c29;
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+}
+.response-status .flash {
+    color: #f1c40f;
+    margin-right: 5px;
+}
+
+/* --- BARRE DE RECHERCHE DES OFFRES --- */
+.search-bar-container {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    border: 1px solid #ddd;
+}
+.search-input {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-right: 10px;
+}
+.filter-select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+.search-btn {
+    background: #2557a7; /* Bleu Indeed */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.search-btn:hover {
+    background: #1d438a;
+}
+
+/* --- CANDIDATURES (Tableau) --- */
+.table-container { overflow-x: auto; background: white; padding: 20px; border-radius: 8px; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 15px; text-align: left; border-bottom: 1px solid #ddd; }
+th { background-color: #f8f9fa; }
+.status { padding: 5px 10px; border-radius: 15px; font-size: 0.85rem; color: white; }
+.encours { background: #f39c12; }
+.refuse { background: #e74c3c; }
+.accepte { background: #27ae60; }
+
+
+/* --- PARTENAIRES & CONSEILS --- */
+.partners-grid, .advice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+.partner-card, .advice-card { background: white; padding: 20px; text-align: center; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+.partner-card i, .advice-card i { font-size: 3rem; color: #34495e; margin-bottom: 10px; }
+
+
+/* --- CONNEXION (Espaces) --- */
+.auth-container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+.auth-tabs { display: flex; margin-bottom: 20px; border-bottom: 2px solid #ecf0f1; }
+.tab-btn { flex: 1; padding: 15px; border: none; background: none; font-size: 1rem; cursor: pointer; color: #7f8c8d; font-weight: 600; }
+.tab-btn.active { color: #2c3e50; border-bottom: 3px solid #3498db; }
+
+
+/* --- LOGIN/REGISTER FORM GROUPS --- */
+.auth-group {
+    display: none;
+    border: 1px solid #ecf0f1;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+.auth-group.active-group {
+    display: block;
+}
+
+.sub-tabs {
+    display: flex;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ecf0f1;
+}
+.sub-tab-btn {
+    padding: 10px 15px;
+    border: none;
+    background: none;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: #7f8c8d;
+    font-weight: 600;
+}
+.sub-tab-btn.active {
+    color: #e74c3c;
+    border-bottom: 3px solid #e74c3c;
+}
+.auth-form { display: none; }
+.auth-form.active-form { display: block; }
+.input-group { margin-bottom: 15px; }
+.input-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+.input-group input, .input-group select, .input-group textarea { width: 100%; padding: 10px; border: 1px solid #bdc3c7; border-radius: 5px; }
+.info-text { font-size: 0.85rem; color: #7f8c8d; margin-bottom: 20px; background: #fdfefe; padding: 10px; border-left: 3px solid #f1c40f; }
+.btn-submit { width: 100%; padding: 12px; background: #3498db; color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; }
+.btn-submit:hover { background: #2980b9; }
+
+
+/* Amélioration des formulaires */
+.form-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px; 
+}
+.form-grid .full-width { 
+    grid-column: 1 / -1; 
+}
+.help-text { 
+    font-size: 0.8rem; 
+    color: #7f8c8d; 
+    margin-top: 5px; 
+    display: block;
+}
+
+
+/* --- MODAL (Le formulaire Démarrons Ensemble) --- */
+.modal {
+    display: none;
+    position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5); overflow: auto;
+    padding-top: 50px;
+}
+.modal-content {
+    background-color: #fff; margin: auto; padding: 40px; border-radius: 8px;
+    width: 90%; max-width: 800px; position: relative;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.close-btn { position: absolute; top: 15px; right: 25px; font-size: 2rem; cursor: pointer; color: #aaa; }
+.close-btn:hover { color: black; }
+.form-header h1 { font-size: 2rem; color: #1a1a2e; }
+.cookie-banner { background: #fff9c4; border-left: 4px solid #fbc02d; padding: 10px; margin: 20px 0; font-size: 0.9rem; }
+.input-wrapper { position: relative; }
+.input-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #5d6d7e; }
+.input-wrapper input, .input-wrapper select { padding-left: 40px; background: #f8f9fa; }
+textarea { width: 100%; padding: 10px; border: 1px solid #dde2e5; border-radius: 8px; resize: vertical; background: #f8f9fa; }
+.char-count { text-align: right; font-size: 0.8rem; color: #888; }
+.btn-submit-modal { background: #607d8b; color: white; border: none; padding: 15px 30px; border-radius: 8px; width: 100%; margin-top: 20px; font-weight: bold; cursor: pointer; }
+.btn-submit-modal:hover { background: #455a64; }
+
+
+/* --- MEDIA QUERIES GÉNÉRALES (768px) --- */
+@media (max-width: 768px) {
+    /* NAVIGATION & BURGER */
+    .navbar {
+        flex-direction: row;
+        padding: 15px 20px;
+    }
+    .burger {
+        display: block;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background-color: #2c3e50;
+        box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+    }
+    .nav-links.nav-active {
+        display: flex; /* Affiche le menu quand actif */
+    }
+    .nav-links li {
+        text-align: center;
+        padding: 10px 0;
+        border-top: 1px solid #34495e;
+    }
+    
+    /* SECTIONS */
+    .section {
+        padding: 20px;
+    }
+
+    /* OFFRES */
+    .offers-container {
+        flex-direction: column;
+    }
+    .offers-list {
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .offer-details-panel {
+        position: static;
+        max-height: none;
+        margin-top: 20px;
+        height: auto;
+        overflow-y: visible;
+    }
+    
+    /* BARRE DE RECHERCHE */
+    .search-bar-container {
+        flex-wrap: wrap;
+    }
+    .search-input {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    .filter-select {
+        flex: 1;
+        margin-right: 10px;
+    }
+    .search-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* CONNEXION / AUTHENTIFICATION */
+    .auth-container {
+        padding: 20px;
+    }
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
