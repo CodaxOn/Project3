@@ -18,7 +18,12 @@ function get_value_nocase($array, $key) {
             return $v;
         }
     }
-    return 'Non trouvé';
+   MESSAGE = 'ceci est un doublon' ;
+
+fonction  exécuter () {
+  préparer (MESSAGE); // Conforme - la chaîne littérale dupliquée est remplacée par une constante et peut être réutilisée en toute sécurité 
+  exécuter (MESSAGE);
+   libérer (MESSAGE);
 }
 ?>
 
