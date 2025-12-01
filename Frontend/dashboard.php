@@ -245,7 +245,10 @@ if (isset($_GET['msg'])) {
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Salaire (Optionnel)</label>
+                               <label>
+  <input type="text" />
+  Salaire (Optionnel)
+</label>
                                 <input type="text" name="salary" placeholder="Ex: 35k - 45k">
                             </div>
                         </div>
