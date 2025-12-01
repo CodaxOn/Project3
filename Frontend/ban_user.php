@@ -1,6 +1,6 @@
 <?php
 // Fichier : ban_user.php
-require 'config.php';
+use 'config.php';
 
 // SÉCURITÉ ADMIN
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
