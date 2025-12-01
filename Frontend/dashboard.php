@@ -223,7 +223,10 @@ if (isset($_GET['msg'])) {
                                 <input type="text" name="title" placeholder="Ex: Développeur Fullstack" required>
                             </div>
                             <div class="form-group">
-                                <label>Lieu</label>
+                               <label>
+  <input type="text" />
+  Favorite food
+</label>
                                 <input type="text" name="location" placeholder="Ex: Paris (75)" required>
                             </div>
                         </div>
