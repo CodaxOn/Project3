@@ -1,6 +1,6 @@
 <?php
 // Fichier : delete_user.php
-require 'config.php';
+use 'config.php';
 
 // SÉCURITÉ : SEUL L'ADMIN PEUT SUPPRIMER DES GENS
 if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
