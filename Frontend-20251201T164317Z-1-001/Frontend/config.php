@@ -10,9 +10,12 @@ $pass = '';
 
 try {
     // Connexion avec gestion des accents (utf8)
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+    $password = getenv('MYSQL_SECURE_PASSWORD');
+    $conn = new mysqli($servername, $username, $password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Erreur de connexion BDD : " . $e->getMessage());
 }
 ?>
+
+
