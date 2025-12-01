@@ -233,7 +233,10 @@ if (isset($_GET['msg'])) {
 
                         <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                             <div class="form-group">
-                                <label>Type de contrat</label>
+                                <label>
+  <input type="text" />
+  Favorite food
+</label>
                                 <select name="contract_type" required>
                                     <option value="CDI">CDI</option>
                                     <option value="CDD">CDD</option>
