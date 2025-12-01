@@ -11,11 +11,19 @@ $user_id = $_SESSION['user_id'];
 
 // Récupération des messages de succès
 $msg = "";
-if(isset($_GET['msg'])) {
-    if($_GET['msg'] == 'logo_ok') $msg = "✅ Logo mis à jour avec succès !";
-    if($_GET['msg'] == 'cv_ok') $msg = "✅ CV envoyé avec succès !";
-    if($_GET['msg'] == 'cv_deleted') $msg = "🗑️ CV supprimé avec succès.";
-    if($_GET['msg'] == 'deleted') $msg = "🗑️ Offre supprimée.";
+if (isset($_GET['msg'])) {
+    if ($_GET['msg'] == 'logo_ok') {
+        $msg = "✅ Logo mis à jour avec succès !";
+    }
+    if ($_GET['msg'] == 'cv_ok') {
+        $msg = "✅ CV envoyé avec succès !";
+    }
+    if ($_GET['msg'] == 'cv_deleted') {
+        $msg = "🗑️ CV supprimé avec succès.";
+    }
+    if ($_GET['msg'] == 'deleted') {
+        $msg = "🗑️ Offre supprimée.";
+    }
 }
 ?>
 
