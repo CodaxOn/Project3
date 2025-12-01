@@ -262,7 +262,10 @@ if (isset($_GET['msg'])) {
                         </div>
 
                         <div class="form-group">
-                            <label>Description du poste</label>
+                            <label>
+  <input type="text" />
+  Description du poste
+</label>
                             <textarea name="description" rows="6" required placeholder="Décrivez les missions et le profil recherché..."></textarea>
                         </div>
 
