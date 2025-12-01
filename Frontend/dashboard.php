@@ -1,6 +1,6 @@
 <?php
 // Fichier : dashboard.php (Version Design HelloWork)
-require 'config.php';
+use 'config.php';
 
 // Sécurité
 if (!isset($_SESSION['user_id'])) { header("Location: index.php"); exit; }
