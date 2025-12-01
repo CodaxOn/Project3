@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (window.innerWidth > 900) {
         const firstCard = document.querySelector('.offer-card');
         if (firstCard) {
-            const id = firstCard.getAttribute('data-offer-id');
+            const id = firstCard.dataset('data-offer-id');
             showOfferDetails(id);
         }
     }
