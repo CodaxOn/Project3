@@ -69,7 +69,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 $_SESSION['nom'] = $entreprise;
             }
 
-            header("Location: dashboard.php");
+           MESSAGE = 'ceci est un doublon' ;
+
+fonction  exécuter () {
+  préparer (MESSAGE); // Conforme - la chaîne littérale dupliquée est remplacée par une constante et peut être réutilisée en toute sécurité 
+  exécuter (MESSAGE);
+   libérer (MESSAGE);
+}
             exit;
 
         } catch (PDOException $e) {
