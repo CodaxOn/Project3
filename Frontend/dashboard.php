@@ -254,7 +254,10 @@ if (isset($_GET['msg'])) {
                         </div>
 
                         <div class="form-group">
-                            <label>Mots-clés (Compétences)</label>
+                            <label>
+  <input type="text" />
+  Mots-clés (Compétences)
+</label>
                             <input type="text" name="keywords" placeholder="Ex: PHP, MySQL, React, Junior">
                         </div>
 
