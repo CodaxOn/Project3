@@ -218,14 +218,14 @@ if (isset($_GET['msg'])) {
                             <div class="form-group">
                                 < label > 
   < input  type = "text" />
-  Nourriture préférée
+  Titre du poste 
 </ label >
                                 <input type="text" name="title" placeholder="Ex: Développeur Fullstack" required>
                             </div>
                             <div class="form-group">
                                <label>
   <input type="text" />
-  Favorite food
+  Lieu
 </label>
                                 <input type="text" name="location" placeholder="Ex: Paris (75)" required>
                             </div>
@@ -235,7 +235,7 @@ if (isset($_GET['msg'])) {
                             <div class="form-group">
                                 <label>
   <input type="text" />
-  Favorite food
+  Type de contrat
 </label>
                                 <select name="contract_type" required>
                                     <option value="CDI">CDI</option>
