@@ -9,7 +9,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] != 'admin') {
 
 // Fonction utilitaire
 function get_value_nocase($array, $key) {
-    if (!is_array($array)) return 'Erreur';
+    if (!is_array($array)) {
+        return 'Erreur';
+    }
+
     foreach ($array as $k => $v) {
         if (strtolower($k) === strtolower($key)) {
             return $v;
