@@ -425,27 +425,48 @@ if (isset($_GET['logout'])) {
             </div>
             <div>
                 <h4 style="margin-bottom: 15px;">Candidats</h4>
-                <ul style="color:#666; line-height: 2;">
-                    <li><a href="javascript:void(0)" onclick="showSection('offres')">Toutes les offres</a></li>
-                    <?php if(isset($_SESSION['user_id'])): ?>
-                        <li><a href="dashboard.php">Mon espace</a></li>
-                    <?php else: ?>
-                        <li><a href="javascript:void(0)" onclick="showSection('connexion')">Se connecter / S'inscrire</a></li>
-                    <?php endif; ?>
-                </ul>
-            </div>
-            <div>
-                <h4 style="margin-bottom: 15px;">Entreprises</h4>
-                <ul style="color:#666; line-height: 2;">
-                    <?php if(isset($_SESSION['user_id'])): ?>
-                        <li><a href="post_job.php">Poster une annonce</a></li>
-                    <?php else: ?>
-                        <li><a href="javascript:void(0)" onclick="showSection('connexion'); switchAuthSection('recruteur');">Poster une annonce</a></li>
-                    <?php endif; ?>
-                    <li><a href="javascript:void(0)" onclick="showSection('conseils')">Solutions RH</a></li>
-                </ul>
-            </div>
-        </div>
+               <ul style="color:#666; line-height: 2;">
+    <!-- Action JS : bouton -->
+    <li>
+        <button type="button" onclick="showSection('offres')">
+            Toutes les offres
+        </button>
+    </li>
+
+    <?php if(isset($_SESSION['user_id'])): ?>
+        <!-- Vrai lien de navigation : on garde <a> -->
+        <li><a href="dashboard.php">Mon espace</a></li>
+    <?php else: ?>
+        <li>
+            <button type="button" onclick="showSection('connexion')">
+                Se connecter / S'inscrire
+            </button>
+        </li>
+    <?php endif; ?>
+</ul>
+
+<div>
+    <h4 style="margin-bottom: 15px;">Entreprises</h4>
+    <ul style="color:#666; line-height: 2;">
+        <?php if(isset($_SESSION['user_id'])): ?>
+            <li><a href="post_job.php">Poster une annonce</a></li>
+        <?php else: ?>
+            <li>
+                <button type="button"
+                        onclick="showSection('connexion'); switchAuthSection('recruteur');">
+                    Poster une annonce
+                </button>
+            </li>
+        <?php endif; ?>
+
+        <li>
+            <button type="button" onclick="showSection('conseils')">
+                Solutions RH
+            </button>
+        </li>
+    </ul>
+</div>
+
         <div style="text-align:center; margin-top:50px; padding-top:20px; border-top:1px solid #f0f0f0; color:#999; font-size: 0.8rem;">
             © 2025 StageBoard - Tous droits réservés.
         </div>
