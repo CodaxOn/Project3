@@ -24,18 +24,43 @@ use 'config.php'; ?>
     <nav class="navbar">
         <div class="logo">Stage<span class="highlight">Board</span></div>
 <ul class="nav-links">
-            <li><button onClick="foo">Perform action</button>
-<a href="#section" onClick="foo" /></a></li>
-            <li><a href="#" onclick="showSection('offres')">Nos Offres</a></li>
-            <li><a href="#" onclick="showSection('partenaires')">Entreprises</a></li>
-            
-            <li><a href="#" onclick="showSection('conseils')">Conseils & Aide</a></li> 
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'candidat'): ?>
-                    <li><a href="#" onclick="showSection('candidatures')">Mes Candidatures</a></li>
-                <?php endif; ?>
+    <!-- Accueil : affiche la section 'accueil' -->
+    <li>
+        <button type="button" class="active"
+                onclick="showSection('accueil')">
+            Accueil
+        </button>
+    </li>
 
-                <li>
+    <li>
+        <button type="button" onclick="showSection('offres')">
+            Nos Offres
+        </button>
+    </li>
+
+    <li>
+        <button type="button" onclick="showSection('partenaires')">
+            Entreprises
+        </button>
+    </li>
+
+    <li>
+        <button type="button" onclick="showSection('conseils')">
+            Conseils &amp; Aide
+        </button>
+    </li>
+
+    <?php if (isset($_SESSION['user_id'])): ?>
+        <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'candidat'): ?>
+            <li>
+                <button type="button" onclick="showSection('candidatures')">
+                    Mes Candidatures
+                </button>
+            </li>
+        <?php endif; ?>
+    <?php endif; ?>
+</ul>
+
                     <a href="dashboard.php" class="btn-login">
                         <i class="fa-solid fa-gauge"></i> Dashboard
                     </a>
