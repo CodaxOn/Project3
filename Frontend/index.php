@@ -171,7 +171,7 @@ if (isset($_GET['logout'])) {
                         foreach ($offres as $offre): 
                             $monID = $offre['id_job']; 
                 ?>
-                    <div class="offer-card" 
+                  <div onClick="showMessage('offer-card')" role="button" />
                          onclick="showOfferDetails('offer<?= $monID ?>')" 
                          data-offer-id="offer<?= $monID ?>">
                         
