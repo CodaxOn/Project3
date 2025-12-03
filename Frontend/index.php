@@ -86,7 +86,7 @@ if (isset($_GET['logout'])) {
 <?php endif; ?>
 
         </ul>
-        <div class="burger" onclick="toggleBurgerMenu()">
+        <div onClick="showMessage('burger')" role="button" />
             <i class="fa-solid fa-bars"></i>
         </div>
     </nav>
