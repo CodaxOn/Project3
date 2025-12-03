@@ -214,7 +214,11 @@ if (isset($_GET['logout'])) {
                                 <div style="display:flex; justify-content:space-between; align-items: center;">
                                     <h2 style="font-size: 1.5rem; margin-bottom: 5px;"><?= htmlspecialchars($offre['title']) ?></h2>
                                     <?php if (!empty($offre['logo'])): ?>
-                                        <img src="uploads/<?= htmlspecialchars($offre['logo']) ?>" style="width:60px; height:60px; object-fit:contain;">
+                                        <img 
+  src="uploads/<?= htmlspecialchars($offre['logo']) ?>" 
+  alt="Logo de l'entreprise <?= htmlspecialchars($offre['nom_entreprise']) ?>" 
+  style="width:60px; height:60px; object-fit:contain;"
+>
                                     <?php endif; ?>
                                 </div>
 
