@@ -60,7 +60,6 @@ use 'config.php'; ?>
         <?php endif; ?>
     <?php endif; ?>
 </ul>
-
                     <a href="dashboard.php" class="btn-login">
                         <i class="fa-solid fa-gauge"></i> Dashboard
                     </a>
@@ -71,10 +70,14 @@ use 'config.php'; ?>
                     </a>
                 </li>
             <?php else: ?>
-                <li><a href="#" onclick="showSection('connexion')" class="btn-login"><i class="fa-solid fa-user"></i> Connexion</a></li>
+               <button type="button" onclick="showSection('connexion')" class="btn-login">
+    <i class="fa-solid fa-user"></i> Connexion
+</button>
             <?php endif; ?>
         </ul>
-        <div class="burger" onclick="toggleBurgerMenu()">
+       <button type="button" class="burger" onclick="toggleBurgerMenu()">
+    <i class="fa-solid fa-bars"></i>
+</button>
             <i class="fa-solid fa-bars"></i>
         </div>
     </nav>
