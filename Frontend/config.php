@@ -1,18 +1,35 @@
 <?php
-// Fichier : config.php
-session_start(); // Démarre la session pour tout le site
+// Fichier : config.php (version sécurisée pour base projet_3)
 
-// Paramètres de connexion (Attention à l'espace dans 'projet 3')
+// 1. Paramètres de connexion
 $host = 'localhost';
-$dbname = 'project_3'; 
-$user = 'root';
-$pass = '';
+$dbname = 'project_3';   // nom exact de ta base dans phpMyAdmin
+$username = 'root';
+$password = '';
 
+// 2. Connexion PDO avec gestion d'erreurs propre
 try {
-    // Connexion avec gestion des accents (utf8)
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+    $pdo = new PDO(
+        "mysql:host=$host;dbname=$dbname;charset=utf8",
+        $username,
+        $password
+    );
+    // Mode erreurs en exceptions
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Fetch par défaut en tableau associatif
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+
 } catch (PDOException $e) {
-    die("Erreur de connexion BDD : " . $e->getMessage());
+    // On log l'erreur côté serveur, mais on ne la montre pas au visiteur
+    error_log('Erreur PDO : ' . $e->getMessage());
+    die("Erreur de connexion à la base de données. Veuillez réessayer plus tard.");
+}
+
+// 3. Sécurisation basique des cookies de session
+ini_set('session.cookie_httponly', 1); // Empêche JavaScript de lire le cookie
+
+// 4. Démarrage de la session (si pas déjà démarrée)
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
 ?>

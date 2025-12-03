@@ -1,0 +1,7 @@
+# Interdit l'exécution de fichiers PHP dans ce dossier
+<Files *.php>
+    Deny from all
+</Files>
+
+# Empêche les curieux de voir la liste des fichiers
+Options -Indexes

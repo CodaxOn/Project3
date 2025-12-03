@@ -1,11 +1,21 @@
-<?php require 'config.php'; ?>
+<?php
+require 'config.php'; 
+
+// Gestion de la déconnexion
+if (isset($_GET['logout'])) {
+    session_destroy();
+    header("Location: index.php");
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StageBoard - Emplois et Stages</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Force le rechargement du CSS -->
+    <link rel="stylesheet" href="style.css?v=<?php echo time(); ?>">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -23,28 +33,37 @@
     <nav class="navbar">
         <div class="logo">Stage<span class="highlight">Board</span></div>
         <ul class="nav-links">
-            <li><a href="#" class="active" onclick="showSection('accueil')">Accueil</a></li>
-            <li><a href="#" onclick="showSection('offres')">Nos Offres</a></li>
-            <li><a href="#" onclick="showSection('partenaires')">Entreprises</a></li>
+            <li><a href="index.php" onclick="showSection('accueil')">Accueil</a></li>
+            <li><a href="javascript:void(0)" onclick="showSection('offres')">Nos Offres</a></li>
+            <li><a href="javascript:void(0)" onclick="showSection('partenaires')">Entreprises</a></li>
             
-            <li><a href="#" onclick="showSection('conseils')">Conseils & Aide</a></li> 
+            <!-- LIEN CORRIGÉ VERS LA PAGE CONSEILS -->
+            <li><a href="conseils.php">Conseils & Aide</a></li> 
+            
             <?php if (isset($_SESSION['user_id'])): ?>
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'candidat'): ?>
-                    <li><a href="#" onclick="showSection('candidatures')">Mes Candidatures</a></li>
+                    <li><a href="javascript:void(0)" onclick="showSection('candidatures')">Mes Candidatures</a></li>
                 <?php endif; ?>
 
                 <li>
-                    <a href="dashboard.php" class="btn-login">
-                        <i class="fa-solid fa-gauge"></i> Dashboard
-                    </a>
+                    <?php if ($_SESSION['role'] === 'admin'): ?>
+                        <a href="admin.php" class="btn-login" style="background-color: #e74c3c !important;">
+                            <i class="fa-solid fa-screwdriver-wrench"></i> Administration
+                        </a>
+                    <?php else: ?>
+                        <a href="dashboard.php" class="btn-login">
+                            <i class="fa-solid fa-gauge"></i> Dashboard
+                        </a>
+                    <?php endif; ?>
                 </li>
+
                 <li>
-                    <a href="auth.php?logout=true" style="color: #ff5e57;">
+                    <a href="index.php?logout=true" style="color: #ff5e57;">
                         <i class="fa-solid fa-power-off"></i>
                     </a>
                 </li>
             <?php else: ?>
-                <li><a href="#" onclick="showSection('connexion')" class="btn-login"><i class="fa-solid fa-user"></i> Connexion</a></li>
+                <li><a href="javascript:void(0)" onclick="showSection('connexion')" class="btn-login"><i class="fa-solid fa-user"></i> Connexion</a></li>
             <?php endif; ?>
         </ul>
         <div class="burger" onclick="toggleBurgerMenu()">
@@ -250,6 +269,7 @@
         </div>
     </section>
 
+    <!-- SECTION CONSEILS (Redirige vers conseils.php) -->
     <section id="conseils" class="section">
         <h2 style="margin-top: 10px;">🎓 Conseils & Ressources Carrières</h2>
         <p style="color: var(--text-muted); margin-bottom: 30px;">Préparez votre avenir professionnel avec nos guides gratuits.</p>
@@ -259,19 +279,19 @@
             <div class="partner-card" style="text-align: left; border-radius: 12px; padding: 30px;">
                 <h3 style="color: var(--primary-color); font-size: 1.3rem;"><i class="fa-solid fa-file-lines"></i> Guide CV Parfait</h3>
                 <p style="color: var(--text-main); margin: 10px 0;">Découvrez nos astuces pour une structure optimale et un contenu percutant qui attire l'œil des recruteurs.</p>
-                <a href="#" style="color: var(--primary-color); font-weight: 600;">Télécharger la check-list →</a>
+                <a href="conseils.php#cv" style="color: var(--primary-color); font-weight: 600;">Lire le guide CV →</a>
             </div>
 
             <div class="partner-card" style="text-align: left; border-radius: 12px; padding: 30px;">
                 <h3 style="color: var(--primary-color); font-size: 1.3rem;"><i class="fa-solid fa-microphone"></i> Préparation Entretien</h3>
                 <p style="color: var(--text-main); margin: 10px 0;">Les 10 questions types, comment se préparer, et gérer le stress efficacement.</p>
-                <a href="#" style="color: var(--primary-color); font-weight: 600;">Lire les conseils essentiels →</a>
+                <a href="conseils.php#entretien" style="color: var(--primary-color); font-weight: 600;">Conseils entretien →</a>
             </div>
 
             <div class="partner-card" style="text-align: left; border-radius: 12px; padding: 30px;">
                 <h3 style="color: var(--primary-color); font-size: 1.3rem;"><i class="fa-solid fa-user-tie"></i> Stratégie de Recherche</h3>
                 <p style="color: var(--text-main); margin: 10px 0;">Méthodes pour cibler les bonnes entreprises, networking, et candidatures spontanées réussies.</p>
-                <a href="#" style="color: var(--primary-color); font-weight: 600;">Voir nos méthodes secrètes →</a>
+                <a href="conseils.php#recherche" style="color: var(--primary-color); font-weight: 600;">Découvrir la méthode →</a>
             </div>
         </div>
     </section>
@@ -378,15 +398,23 @@
             <div>
                 <h4 style="margin-bottom: 15px;">Candidats</h4>
                 <ul style="color:#666; line-height: 2;">
-                    <li><a href="#" onclick="showSection('offres')">Toutes les offres</a></li>
-                    <li><a href="#">Mon espace</a></li>
+                    <li><a href="javascript:void(0)" onclick="showSection('offres')">Toutes les offres</a></li>
+                    <?php if(isset($_SESSION['user_id'])): ?>
+                        <li><a href="dashboard.php">Mon espace</a></li>
+                    <?php else: ?>
+                        <li><a href="javascript:void(0)" onclick="showSection('connexion')">Se connecter / S'inscrire</a></li>
+                    <?php endif; ?>
                 </ul>
             </div>
             <div>
                 <h4 style="margin-bottom: 15px;">Entreprises</h4>
                 <ul style="color:#666; line-height: 2;">
-                    <li><a href="#">Poster une annonce</a></li>
-                    <li><a href="#">Solutions RH</a></li>
+                    <?php if(isset($_SESSION['user_id'])): ?>
+                        <li><a href="post_job.php">Poster une annonce</a></li>
+                    <?php else: ?>
+                        <li><a href="javascript:void(0)" onclick="showSection('connexion'); switchAuthSection('recruteur');">Poster une annonce</a></li>
+                    <?php endif; ?>
+                    <li><a href="javascript:void(0)" onclick="showSection('conseils')">Solutions RH</a></li>
                 </ul>
             </div>
         </div>
@@ -455,25 +483,130 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
     <script>
-        // JS pour initialiser la vue de connexion après la correction HTML
-        document.addEventListener('DOMContentLoaded', () => {
-            const currentHash = window.location.hash.substring(1);
-            if (currentHash && document.getElementById(currentHash)) {
-                // Si l'URL a un #section, on l'affiche
-                showSection(currentHash);
-            } else {
-                // Sinon, on affiche l'accueil par défaut
-                showSection('accueil');
+        // =========================================
+        // 1. GESTION DES SECTIONS & NAVIGATION
+        // =========================================
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active-section');
+            });
+
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.add('active-section');
+            }
+            
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            const activeLink = document.querySelector(`.nav-links a[onclick*="showSection('${sectionId}')"]`);
+            if (activeLink) {
+                activeLink.classList.add('active');
+            }
+            
+            document.querySelector('.nav-links').classList.remove('nav-active');
+            history.pushState(null, null, `#${sectionId}`);
+            
+            if (sectionId === 'connexion' && typeof switchAuthSection === 'function') {
+                switchAuthSection('candidat'); 
+            }
+        }
+
+        function toggleBurgerMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('nav-active');
+        }
+
+        // =========================================
+        // 2. GESTION DES FORMULAIRES DE CONNEXION 
+        // =========================================
+        function switchAuthSection(userType) {
+            document.querySelectorAll('.auth-tabs .tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.auth-group').forEach(group => group.classList.remove('active-group'));
+
+            document.querySelector(`.auth-tabs .tab-btn[onclick*="switchAuthSection('${userType}')"]`).classList.add('active');
+            document.getElementById(`${userType}-forms`).classList.add('active-group');
+
+            switchAuthForm(userType, 'login');
+        }
+
+        function switchAuthForm(userType, formType) {
+            document.querySelectorAll(`#${userType}-forms .sub-tab-btn`).forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll(`#${userType}-forms .auth-form`).forEach(form => form.classList.remove('active-form'));
+
+            document.querySelector(`#${userType}-forms .sub-tab-btn[onclick*="'${formType}'"]`).classList.add('active');
+            document.getElementById(`form-${userType}-${formType}`).classList.add('active-form');
+        }
+
+        // =========================================
+        // 3. GESTION DE L'AFFICHAGE DES DÉTAILS DE L'OFFRE
+        // =========================================
+
+        function showOfferDetails(offerId) {
+            document.querySelectorAll('.offer-card').forEach(card => {
+                card.classList.remove('active');
+            });
+
+            const card = document.querySelector(`.offer-card[data-offer-id="${offerId}"]`);
+            if (card) {
+                card.classList.add('active');
             }
 
-            // Pour que les onglets de connexion s'initialisent correctement si la section est visible
-            if (document.getElementById('connexion')) {
-                // On active le candidat par défaut 
-                if (typeof switchAuthSection === 'function') {
-                    switchAuthSection('candidat'); 
+            const detailsContentElement = document.getElementById(`details-${offerId}`);
+            const panel = document.getElementById('offer-details-content');
+            
+            if (detailsContentElement && panel) {
+                panel.innerHTML = detailsContentElement.innerHTML;
+                const offerDetailsPanelContainer = document.querySelector('.offer-details-panel');
+                if (offerDetailsPanelContainer) {
+                    offerDetailsPanelContainer.scrollTop = 0;
                 }
+            }
+        }
+        
+        // =========================================
+        // 4. GESTION DE LA MODALE DE CANDIDATURE
+        // =========================================
+
+        function openModal(jobId) {
+            document.getElementById('modal_job_id').value = jobId;
+            document.getElementById('applicationModal').style.display = "block";
+            document.querySelector('.nav-links').classList.remove('nav-active');
+        }
+
+        function closeModal() {
+            document.getElementById('applicationModal').style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('applicationModal');
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const textarea = document.getElementById('modal_message');
+            const charCount = document.querySelector('.char-count');
+
+            if (textarea && charCount) {
+                const maxLength = textarea.getAttribute('maxlength') || 1000;
+                charCount.textContent = `0/${maxLength} caractères`;
+
+                textarea.addEventListener('input', () => {
+                    const currentLength = textarea.value.length;
+                    charCount.textContent = `${currentLength}/${maxLength} caractères`;
+                });
+            }
+            
+            const currentHash = window.location.hash.substring(1);
+            if (currentHash && document.getElementById(currentHash)) {
+                showSection(currentHash);
+            } else {
+                showSection('accueil');
             }
         });
     </script>
