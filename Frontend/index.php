@@ -22,7 +22,7 @@
 
     <nav class="navbar">
         <div class="logo">Stage<span class="highlight">Board</span></div>
-<ul class="nav-links">
+        <ul class="nav-links">
             <li><a href="#" class="active" onclick="showSection('accueil')">Accueil</a></li>
             <li><a href="#" onclick="showSection('offres')">Nos Offres</a></li>
             <li><a href="#" onclick="showSection('partenaires')">Entreprises</a></li>
@@ -178,11 +178,11 @@
                                     <?= htmlspecialchars($offre['location']) ?> • <?= htmlspecialchars($offre['contract_type']) ?>
                                 </div>
                                 
-                                <?php if(isset($_SESSION['user_id']) && $_SESSION['role'] == 'candidat'): ?>
+                                <?php if (isset($_SESSION['user_id']) && $_SESSION['role'] == 'candidat'): ?>
                                     <button onclick="openModal(<?= $monID ?>)" style="background-color: #2557a7; color: white; font-weight: 700; padding: 12px 24px; border-radius: 8px; border: none; font-size: 16px; cursor: pointer; width: 100%; max-width: 300px;">
                                         Postuler maintenant
                                     </button>
-                                <?php elseif(isset($_SESSION['role']) && $_SESSION['role'] == 'recruteur'): ?>
+                                <?php elseif (isset($_SESSION['role']) && $_SESSION['role'] == 'recruteur'): ?>
                                     <div style="background:#f0f2f5; padding:10px; border-radius:8px; color:#666; font-size:14px; text-align:center;">
                                         <i class="fa-solid fa-eye"></i> Aperçu Recruteur
                                     </div>
@@ -247,6 +247,32 @@
             <div class="partner-card"><i class="fa-brands fa-amazon" style="color: #FF9900;"></i><p>Amazon</p></div>
             <div class="partner-card"><i class="fa-brands fa-microsoft" style="color: #00A4EF;"></i><p>Microsoft</p></div>
             <div class="partner-card"><i class="fa-brands fa-spotify" style="color: #1DB954;"></i><p>Spotify</p></div>
+        </div>
+    </section>
+
+    <section id="conseils" class="section">
+        <h2 style="margin-top: 10px;">🎓 Conseils & Ressources Carrières</h2>
+        <p style="color: var(--text-muted); margin-bottom: 30px;">Préparez votre avenir professionnel avec nos guides gratuits.</p>
+            
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+            
+            <div class="partner-card" style="text-align: left; border-radius: 12px; padding: 30px;">
+                <h3 style="color: var(--primary-color); font-size: 1.3rem;"><i class="fa-solid fa-file-lines"></i> Guide CV Parfait</h3>
+                <p style="color: var(--text-main); margin: 10px 0;">Découvrez nos astuces pour une structure optimale et un contenu percutant qui attire l'œil des recruteurs.</p>
+                <a href="#" style="color: var(--primary-color); font-weight: 600;">Télécharger la check-list →</a>
+            </div>
+
+            <div class="partner-card" style="text-align: left; border-radius: 12px; padding: 30px;">
+                <h3 style="color: var(--primary-color); font-size: 1.3rem;"><i class="fa-solid fa-microphone"></i> Préparation Entretien</h3>
+                <p style="color: var(--text-main); margin: 10px 0;">Les 10 questions types, comment se préparer, et gérer le stress efficacement.</p>
+                <a href="#" style="color: var(--primary-color); font-weight: 600;">Lire les conseils essentiels →</a>
+            </div>
+
+            <div class="partner-card" style="text-align: left; border-radius: 12px; padding: 30px;">
+                <h3 style="color: var(--primary-color); font-size: 1.3rem;"><i class="fa-solid fa-user-tie"></i> Stratégie de Recherche</h3>
+                <p style="color: var(--text-main); margin: 10px 0;">Méthodes pour cibler les bonnes entreprises, networking, et candidatures spontanées réussies.</p>
+                <a href="#" style="color: var(--primary-color); font-weight: 600;">Voir nos méthodes secrètes →</a>
+            </div>
         </div>
     </section>
 
