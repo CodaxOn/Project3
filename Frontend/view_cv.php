@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+use 'config.php';
 
 // Vérifier connexion
 if (!isset($_SESSION['user_id'])) {
