@@ -431,7 +431,11 @@ if (isset($_GET['msg'])) {
                                 <td>
                                     <div style="display:flex; align-items:center; gap:10px;">
                                         <?php if(!empty($app['logo'])): ?>
-                                            <img src="uploads/<?= htmlspecialchars($app['logo']) ?>" style="width:30px; height:30px; object-fit:contain; border-radius:4px;">
+                                           <img 
+  src="uploads/<?= htmlspecialchars($app['logo']) ?>" 
+  alt="Logo de l'application" 
+  style="width:30px; height:30px; object-fit:contain; border-radius:4px;"
+>
                                         <?php endif; ?>
                                         <span style="font-weight:600;"><?= htmlspecialchars($app['company_name']) ?></span>
                                     </div>
