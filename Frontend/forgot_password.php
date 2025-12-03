@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+use'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];          // Donnée contrôlée par l'utilisateur
