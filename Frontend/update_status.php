@@ -1,6 +1,6 @@
 <?php
 // Fichier : update_status.php
-require 'config.php';
+use 'config.php';
 
 // Sécurité : Seul un recruteur peut faire ça
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'recruteur') {
