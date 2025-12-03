@@ -34,37 +34,57 @@ if (isset($_GET['logout'])) {
         <div class="logo">Stage<span class="highlight">Board</span></div>
         <ul class="nav-links">
             <li><a href="index.php" onclick="showSection('accueil')">Accueil</a></li>
-            <li><a href="javascript:void(0)" onclick="showSection('offres')">Nos Offres</a></li>
-            <li><a href="javascript:void(0)" onclick="showSection('partenaires')">Entreprises</a></li>
-            
-            <!-- LIEN CORRIGÉ VERS LA PAGE CONSEILS -->
-            <li><a href="conseils.php">Conseils & Aide</a></li> 
-            
-            <?php if (isset($_SESSION['user_id'])): ?>
-                <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'candidat'): ?>
-                    <li><a href="javascript:void(0)" onclick="showSection('candidatures')">Mes Candidatures</a></li>
-                <?php endif; ?>
+           <!-- LIEN OFFRES -->
+<li>
+    <button type="button" onclick="showSection('offres')">Nos Offres</button>
+</li>
 
-                <li>
-                    <?php if ($_SESSION['role'] === 'admin'): ?>
-                        <a href="admin.php" class="btn-login" style="background-color: #e74c3c !important;">
-                            <i class="fa-solid fa-screwdriver-wrench"></i> Administration
-                        </a>
-                    <?php else: ?>
-                        <a href="dashboard.php" class="btn-login">
-                            <i class="fa-solid fa-gauge"></i> Dashboard
-                        </a>
-                    <?php endif; ?>
-                </li>
+<!-- LIEN ENTREPRISES -->
+<li>
+    <button type="button" onclick="showSection('partenaires')">Entreprises</button>
+</li>
 
-                <li>
-                    <a href="index.php?logout=true" style="color: #ff5e57;">
-                        <i class="fa-solid fa-power-off"></i>
-                    </a>
-                </li>
-            <?php else: ?>
-                <li><a href="javascript:void(0)" onclick="showSection('connexion')" class="btn-login"><i class="fa-solid fa-user"></i> Connexion</a></li>
-            <?php endif; ?>
+<!-- LIEN CORRIGÉ VERS LA PAGE CONSEILS -->
+<li><a href="conseils.php">Conseils & Aide</a></li>
+
+<?php if (isset($_SESSION['user_id'])): ?>
+    
+    <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'candidat'): ?>
+        <!-- MES CANDIDATURES -->
+        <li>
+            <button type="button" onclick="showSection('candidatures')">Mes Candidatures</button>
+        </li>
+    <?php endif; ?>
+
+    <li>
+        <?php if ($_SESSION['role'] === 'admin'): ?>
+            <a href="admin.php" class="btn-login" style="background-color: #e74c3c !important;">
+                <i class="fa-solid fa-screwdriver-wrench"></i> Administration
+            </a>
+        <?php else: ?>
+            <a href="dashboard.php" class="btn-login">
+                <i class="fa-solid fa-gauge"></i> Dashboard
+            </a>
+        <?php endif; ?>
+    </li>
+
+    <li>
+        <a href="index.php?logout=true" style="color: #ff5e57;">
+            <i class="fa-solid fa-power-off"></i>
+        </a>
+    </li>
+
+<?php else: ?>
+
+    <!-- CONNEXION -->
+    <li>
+        <button type="button" onclick="showSection('connexion')" class="btn-login">
+            <i class="fa-solid fa-user"></i> Connexion
+        </button>
+    </li>
+
+<?php endif; ?>
+
         </ul>
         <div class="burger" onclick="toggleBurgerMenu()">
             <i class="fa-solid fa-bars"></i>
