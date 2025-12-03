@@ -86,7 +86,11 @@ if (isset($_GET['logout'])) {
 <?php endif; ?>
 
         </ul>
-        <div onClick="showMessage('burger')" role="button" />
+       <!-- L'élément avec gestionnaire de souris possède un tabIndex --> 
+< span  onClick = "doSomething();"  tabIndex = "0"  role = "button" > Soumettre </ span >
+
+<!-- Lien focalisable avec gestionnaire de souris --> 
+< a  href = "javascript:void(0);"  onClick = "doSomething();" > Page suivante </ a >
             <i class="fa-solid fa-bars"></i>
         </div>
     </nav>
