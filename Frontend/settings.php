@@ -102,7 +102,10 @@ if ($role == 'candidat') {
                 <input type="text" name="<?= ($role == 'recruteur') ? 'company_name' : 'username' ?>" value="<?= htmlspecialchars($nom_actuel) ?>" required>
             </div>
             <div class="form-group">
-                <label>Adresse Email</label>
+               <label>
+  Adresse Email
+  <input type="email" name="email" />
+</label>
                 <input type="email" name="email" value="<?= htmlspecialchars($email_actuel) ?>" required>
             </div>
             <button type="submit" name="update_info" class="btn-save">Enregistrer les modifications</button>
@@ -113,7 +116,10 @@ if ($role == 'candidat') {
         <h2><i class="fa-solid fa-lock"></i> Sécurité</h2>
         <form method="POST">
             <div class="form-group">
-                <label>Nouveau mot de passe</label>
+               <label>
+  Nouveau mot de passe
+  <input type="password" name="new_password" />
+</label>
                 <input type="password" name="password" placeholder="Laissez vide si vous ne voulez pas changer">
             </div>
             <button type="submit" name="update_password" class="btn-save" style="background:#e67e22;">Changer le mot de passe</button>
