@@ -95,7 +95,10 @@ if ($role == 'candidat') {
         <h2><i class="fa-solid fa-user-pen"></i> Mes Informations</h2>
         <form method="POST">
             <div class="form-group">
-                <label><?= ($role == 'recruteur') ? "Nom de l'entreprise" : "Nom d'utilisateur" ?></label>
+                <label>
+  <%= (@role == 'recruteur') ? "Nom de l'entreprise" : "Nom d'utilisateur" %>
+  <input type="text" name="dynamic_name" />
+</label>
                 <input type="text" name="<?= ($role == 'recruteur') ? 'company_name' : 'username' ?>" value="<?= htmlspecialchars($nom_actuel) ?>" required>
             </div>
             <div class="form-group">
