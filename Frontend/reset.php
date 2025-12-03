@@ -1,5 +1,5 @@
 <?php
-require 'config.php';
+use 'config.php';
 
 if (isset($_GET['token']) && isset($_GET['email'])) {
     $token = $_GET['token'];
