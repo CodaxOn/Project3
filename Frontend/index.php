@@ -474,7 +474,9 @@ if (isset($_GET['logout'])) {
     
     <div id="applicationModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
+           <button type="button" class="close-btn" onclick="closeModal()">
+    ×
+</button>
             
             <div class="form-header">
                 <h1 style="font-size: 2rem; color: var(--text-main); margin-bottom: 5px;">Déposer ma candidature</h1>
