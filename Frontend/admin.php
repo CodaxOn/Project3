@@ -1,6 +1,6 @@
 <?php
 // Fichier : admin.php (Version Design Pro)
-require 'config.php';
+use 'config.php';
 
 // 1. SÉCURITÉ : Vérifier si l'utilisateur est ADMIN
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
