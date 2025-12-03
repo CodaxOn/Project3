@@ -30,10 +30,64 @@ if ($action === 'register') {
     $email    = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
 
+<<<<<<< HEAD
     // Vérification simple
     if (empty($role) || empty($email) || empty($password)) {
         header("Location: index.php?section=connexion&msg=register_missing");
         exit;
+=======
+            // --- 2. Vérification de l'existence de l'email avant insertion ---
+            // On vérifie la colonne correspondante dans la table
+            $email_column = ($role == 'recruteur') ? 'professional_email' : 'email';
+            
+            $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM $table WHERE $email_column = ?");
+            $checkStmt->execute([$email]);
+            if ($checkStmt->fetchColumn() > 0) {
+                // Redirection avec un message d'alerte plus propre
+                echo "<script>alert('Cet email est déjà utilisé.'); window.location.href='index.php#connexion';</script>";
+                exit;
+            }
+            // -------------------------------------------------
+
+            if ($role == 'candidat') {
+                $nom = $_POST['nom'];
+                $sql = "INSERT INTO candidates (username, email, password) VALUES (?, ?, ?)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([$nom, $email, $password]);
+                
+                $_SESSION['user_id'] = $pdo->lastInsertId();
+                $_SESSION['role'] = 'candidat';
+                $_SESSION['nom'] = $nom;
+
+            } elseif ($role == 'recruteur') {
+                $entreprise = $_POST['entreprise'];
+                $siret = $_POST['siret'];
+                
+                // CORRECTION APPLIQUÉE : Utilisation de SIRET_NUMBER et PROFESSIONAL_EMAIL
+                $sql = "INSERT INTO companies (company_name, siret_number, professional_email, password) VALUES (?, ?, ?, ?)";
+                $stmt = $pdo->prepare($sql);
+                $stmt->execute([$entreprise, $siret, $email, $password]);
+
+                $_SESSION['user_id'] = $pdo->lastInsertId();
+                $_SESSION['role'] = 'recruteur';
+                $_SESSION['nom'] = $entreprise;
+            }
+
+           MESSAGE = 'ceci est un doublon' ;
+
+fonction  exécuter () {
+  préparer (MESSAGE); // Conforme - la chaîne littérale dupliquée est remplacée par une constante et peut être réutilisée en toute sécurité 
+  exécuter (MESSAGE);
+   libérer (MESSAGE);
+}
+            exit;
+
+        } catch (PDOException $e) {
+            // Message générique pour l'erreur 42S22 (colonne manquante) ou autre erreur critique
+            // Si cette erreur apparaît, cela signifie qu'une colonne (autre que siret_number ou professional_email) est manquante dans votre BD.
+            die("Erreur critique lors de l'inscription. (Code: " . $e->getCode() . ")");
+        }
+>>>>>>> faa2123b984eedfea4faee50de0378251508ee81
     }
 
     // Hachage sécurisé du mot de passe
@@ -79,6 +133,7 @@ if ($action === 'register') {
         exit;
     }
 }
+<<<<<<< HEAD
 
 // =========================================================
 // 4. CONNEXION (LOGIN)
@@ -161,3 +216,6 @@ if ($action === 'login') {
 }
 ?>
 
+=======
+?>
+>>>>>>> faa2123b984eedfea4faee50de0378251508ee81

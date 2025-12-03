@@ -1,6 +1,6 @@
 <?php
 // Fichier : delete_job.php (Complet avec support Admin)
-require 'config.php';
+use 'config.php';
 
 // Sécurité de base : Il faut être connecté
 if (!isset($_SESSION['user_id'])) {

@@ -9,12 +9,18 @@ $password = '';
 
 // 2. Connexion PDO avec gestion d'erreurs propre
 try {
+<<<<<<< HEAD
     $pdo = new PDO(
         "mysql:host=$host;dbname=$dbname;charset=utf8",
         $username,
         $password
     );
     // Mode erreurs en exceptions
+=======
+    // Connexion avec gestion des accents (utf8)
+   $password = getenv('MYSQL_SECURE_PASSWORD');
+$conn = new mysqli($servername, $username, $password);
+>>>>>>> faa2123b984eedfea4faee50de0378251508ee81
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     // Fetch par défaut en tableau associatif
     $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);

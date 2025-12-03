@@ -80,9 +80,19 @@ function filterOffers() {
 
 // 6. Initialisation (Ouvrir la 1ère offre au chargement)
 document.addEventListener('DOMContentLoaded', () => {
+<<<<<<< HEAD
     const firstCard = document.querySelector('.offer-card');
     if (firstCard) {
         const id = firstCard.getAttribute('data-offer-id');
         showOfferDetails(id);
+=======
+    // Si on est sur un grand écran, on ouvre la première offre par défaut
+    if (window.innerWidth > 900) {
+        const firstCard = document.querySelector('.offer-card');
+        if (firstCard) {
+            const id = firstCard.dataset('data-offer-id');
+            showOfferDetails(id);
+        }
+>>>>>>> faa2123b984eedfea4faee50de0378251508ee81
     }
 });

@@ -1,6 +1,7 @@
 <?php
 // Fichier : apply.php
 require 'config.php';
+use Shop\Vegetable\Tomato
 
 // 1. Sécurité : Vérifier si on est connecté et si on est un candidat
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'candidat') {

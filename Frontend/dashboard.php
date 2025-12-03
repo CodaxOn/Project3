@@ -1,6 +1,6 @@
 <?php
 // Fichier : dashboard.php (Version Design HelloWork)
-require 'config.php';
+use 'config.php';
 
 // Sécurité
 if (!isset($_SESSION['user_id'])) { header("Location: index.php"); exit; }
@@ -11,11 +11,19 @@ $user_id = $_SESSION['user_id'];
 
 // Récupération des messages de succès
 $msg = "";
-if(isset($_GET['msg'])) {
-    if($_GET['msg'] == 'logo_ok') $msg = "✅ Logo mis à jour avec succès !";
-    if($_GET['msg'] == 'cv_ok') $msg = "✅ CV envoyé avec succès !";
-    if($_GET['msg'] == 'cv_deleted') $msg = "🗑️ CV supprimé avec succès.";
-    if($_GET['msg'] == 'deleted') $msg = "🗑️ Offre supprimée.";
+if (isset($_GET['msg'])) {
+    if ($_GET['msg'] == 'logo_ok') {
+        $msg = "✅ Logo mis à jour avec succès !";
+    }
+    if ($_GET['msg'] == 'cv_ok') {
+        $msg = "✅ CV envoyé avec succès !";
+    }
+    if ($_GET['msg'] == 'cv_deleted') {
+        $msg = "🗑️ CV supprimé avec succès.";
+    }
+    if ($_GET['msg'] == 'deleted') {
+        $msg = "🗑️ Offre supprimée.";
+    }
 }
 ?>
 
@@ -208,18 +216,27 @@ if(isset($_GET['msg'])) {
                     <form action="post_job.php" method="POST">
                         <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                             <div class="form-group">
-                                <label>Titre du poste</label>
+                                < label > 
+  < input  type = "text" />
+  Titre du poste 
+</ label >
                                 <input type="text" name="title" placeholder="Ex: Développeur Fullstack" required>
                             </div>
                             <div class="form-group">
-                                <label>Lieu</label>
+                               <label>
+  <input type="text" />
+  Lieu
+</label>
                                 <input type="text" name="location" placeholder="Ex: Paris (75)" required>
                             </div>
                         </div>
 
                         <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                             <div class="form-group">
-                                <label>Type de contrat</label>
+                                <label>
+  <input type="text" />
+  Type de contrat
+</label>
                                 <select name="contract_type" required>
                                     <option value="CDI">CDI</option>
                                     <option value="CDD">CDD</option>
@@ -228,18 +245,27 @@ if(isset($_GET['msg'])) {
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label>Salaire (Optionnel)</label>
+                               <label>
+  <input type="text" />
+  Salaire (Optionnel)
+</label>
                                 <input type="text" name="salary" placeholder="Ex: 35k - 45k">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label>Mots-clés (Compétences)</label>
+                            <label>
+  <input type="text" />
+  Mots-clés (Compétences)
+</label>
                             <input type="text" name="keywords" placeholder="Ex: PHP, MySQL, React, Junior">
                         </div>
 
                         <div class="form-group">
-                            <label>Description du poste</label>
+                            <label>
+  <input type="text" />
+  Description du poste
+</label>
                             <textarea name="description" rows="6" required placeholder="Décrivez les missions et le profil recherché..."></textarea>
                         </div>
 

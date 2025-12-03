@@ -1,6 +1,6 @@
 <?php
 // Fichier : delete_cv.php
-require 'config.php';
+use 'config.php';
 
 // Sécurité
 if (!isset($_SESSION['user_id']) || $_SESSION['role'] != 'candidat') {

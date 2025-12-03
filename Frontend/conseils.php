@@ -1,4 +1,5 @@
-<?php require 'config.php'; ?>
+<?php 
+use 'config.php'; ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -55,6 +56,7 @@
             </div>
         </div>
 
+<<<<<<< HEAD
         <!-- Article 2 : Entretien -->
         <div id="entretien" class="article-card">
             <div class="article-header">
@@ -97,4 +99,7 @@
     </div>
 
 </body>
+=======
+    </body>
+>>>>>>> faa2123b984eedfea4faee50de0378251508ee81
 </html>

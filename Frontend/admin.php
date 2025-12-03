@@ -8,6 +8,7 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     exit;
 }
 
+<<<<<<< HEAD
 $msg = "";
 
 // 2. ACTIONS D'ADMINISTRATION
@@ -25,6 +26,25 @@ if (isset($_GET['delete_user']) && isset($_GET['type'])) {
         $pdo->prepare("DELETE FROM jobs WHERE company_id = ?")->execute([$id]);
     }
     $msg = "Utilisateur supprimé avec succès.";
+=======
+// Fonction utilitaire
+function get_value_nocase($array, $key) {
+    if (!is_array($array)) {
+        return 'Erreur';
+    }
+
+    foreach ($array as $k => $v) {
+        if (strtolower($k) === strtolower($key)) {
+            return $v;
+        }
+    }
+   MESSAGE = 'ceci est un doublon' ;
+
+fonction  exécuter () {
+  préparer (MESSAGE); // Conforme - la chaîne littérale dupliquée est remplacée par une constante et peut être réutilisée en toute sécurité 
+  exécuter (MESSAGE);
+   libérer (MESSAGE);
+>>>>>>> faa2123b984eedfea4faee50de0378251508ee81
 }
 
 // Bannir / Débannir un utilisateur
