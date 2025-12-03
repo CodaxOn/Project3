@@ -24,7 +24,8 @@ use 'config.php'; ?>
     <nav class="navbar">
         <div class="logo">Stage<span class="highlight">Board</span></div>
 <ul class="nav-links">
-            <li><a href="#" class="active" onclick="showSection('accueil')">Accueil</a></li>
+            <li><button onClick="foo">Perform action</button>
+<a href="#section" onClick="foo" /></a></li>
             <li><a href="#" onclick="showSection('offres')">Nos Offres</a></li>
             <li><a href="#" onclick="showSection('partenaires')">Entreprises</a></li>
             
