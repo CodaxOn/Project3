@@ -1,6 +1,6 @@
 <?php
 // Fichier : post_job.php
-require 'config.php';
+use 'config.php';
 
 // 1. Sécurité : Seul un recruteur connecté peut poster
 // On vérifie si l'utilisateur est connecté ET s'il a le rôle 'recruteur'
