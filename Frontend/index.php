@@ -1,5 +1,4 @@
 <?php
-<<<<<<< HEAD
 require 'config.php'; 
 
 // Gestion de la déconnexion
@@ -9,9 +8,6 @@ if (isset($_GET['logout'])) {
     exit;
 }
 ?>
-=======
-use 'config.php'; ?>
->>>>>>> faa2123b984eedfea4faee50de0378251508ee81
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -36,7 +32,6 @@ use 'config.php'; ?>
 
     <nav class="navbar">
         <div class="logo">Stage<span class="highlight">Board</span></div>
-<<<<<<< HEAD
         <ul class="nav-links">
             <li><a href="index.php" onclick="showSection('accueil')">Accueil</a></li>
             <li><a href="javascript:void(0)" onclick="showSection('offres')">Nos Offres</a></li>
@@ -60,48 +55,6 @@ use 'config.php'; ?>
                             <i class="fa-solid fa-gauge"></i> Dashboard
                         </a>
                     <?php endif; ?>
-=======
-<ul class="nav-links">
-    <!-- Accueil : affiche la section 'accueil' -->
-    <li>
-        <button type="button" class="active"
-                onclick="showSection('accueil')">
-            Accueil
-        </button>
-    </li>
-
-    <li>
-        <button type="button" onclick="showSection('offres')">
-            Nos Offres
-        </button>
-    </li>
-
-    <li>
-        <button type="button" onclick="showSection('partenaires')">
-            Entreprises
-        </button>
-    </li>
-
-    <li>
-        <button type="button" onclick="showSection('conseils')">
-            Conseils &amp; Aide
-        </button>
-    </li>
-
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'candidat'): ?>
-            <li>
-                <button type="button" onclick="showSection('candidatures')">
-                    Mes Candidatures
-                </button>
-            </li>
-        <?php endif; ?>
-    <?php endif; ?>
-</ul>
-                    <a href="dashboard.php" class="btn-login">
-                        <i class="fa-solid fa-gauge"></i> Dashboard
-                    </a>
->>>>>>> faa2123b984eedfea4faee50de0378251508ee81
                 </li>
 
                 <li>
@@ -110,18 +63,10 @@ use 'config.php'; ?>
                     </a>
                 </li>
             <?php else: ?>
-<<<<<<< HEAD
                 <li><a href="javascript:void(0)" onclick="showSection('connexion')" class="btn-login"><i class="fa-solid fa-user"></i> Connexion</a></li>
-=======
-               <button type="button" onclick="showSection('connexion')" class="btn-login">
-    <i class="fa-solid fa-user"></i> Connexion
-</button>
->>>>>>> faa2123b984eedfea4faee50de0378251508ee81
             <?php endif; ?>
         </ul>
-       <button type="button" class="burger" onclick="toggleBurgerMenu()">
-    <i class="fa-solid fa-bars"></i>
-</button>
+        <div class="burger" onclick="toggleBurgerMenu()">
             <i class="fa-solid fa-bars"></i>
         </div>
     </nav>
