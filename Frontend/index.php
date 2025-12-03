@@ -1,5 +1,5 @@
 <?php
-require 'config.php'; 
+use 'config.php'; 
 
 // Gestion de la déconnexion
 if (isset($_GET['logout'])) {
