@@ -171,7 +171,11 @@ if (isset($_GET['logout'])) {
                         foreach ($offres as $offre): 
                             $monID = $offre['id_job']; 
                 ?>
-                  <div onClick="showMessage('offer-card')" role="button" />
+               <!-- L'élément avec gestionnaire de souris possède un tabIndex --> 
+< span  onClick = "doSomething();"  tabIndex = "0"  role = "button" > Soumettre </ span >
+
+<!-- Lien focalisable avec gestionnaire de souris --> 
+< a  href = "javascript:void(0);"  onClick = "doSomething();" > Page suivante </ a >
                          onclick="showOfferDetails('offer<?= $monID ?>')" 
                          data-offer-id="offer<?= $monID ?>">
                         
